@@ -18,7 +18,6 @@ app.get("/", (req, res, next) => {
 
 app.post("/tasks", jsonParser, (req, res, next) => {
     req.body.id = surrogatekey++;
-    req.body.status = "PEDING";
     tasks.push(req.body);
     res.send("OK");
 });
@@ -72,17 +71,32 @@ app.put('/tasks/:taskId', jsonParser, function(req,res) {
     }
 });
 
-app.put('/tasks/:taskId', jsonParser, function(req,res){
-    var task = tasks.find(task => task.id == req.params.taskId);
-    task.title = req.body.title;
-    task.detail = req.body.detail;
-    task.status = req.body.status;
+app.put('/tasks/status/:Id', jsonParser, (req,res)=>{
+    let Id = req.params.Id;
+    console.log(Id)
+    function editarEstado(Id){
+        tasks.forEach(function(currentValue, index, arr){
+        if(tasks[index].id==Id){
+            tasks[index].status = req.body.status      
+            res.json("{ Se cambio el extado SUCCES }");   
+         }
+        })
+      }
+      editarEstado(Id)
+    });
 
-    if (task) {
-        res.json(task);
-    } else {
-        res.status(404);
+ app.put('/tasks/status/:Id', jsonParser, (req,res)=>{
+    let Id = req.params.Id;
+    console.log(Id)
+    function editarEstado(Id){
+    tasks.forEach(function(currentValue, index, arr){
+        if(tasks[index].id==Id){
+            tasks[index].status = req.body.status      
+            res.json("{ Falta completar la tarea  PEADING}");   
+        }
+        })
     }
+    editarEstado(Id)
 });
 
 app.listen(3000, () => {

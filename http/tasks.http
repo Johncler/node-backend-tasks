@@ -35,18 +35,18 @@ Content-Type: application/json
 DELETE http://localhost:3000/tasks/3
 
 ###Marcar Completado PUT /tasks/{id}?state=complete
-PUT http://localhost:3000/tasks/2
+PUT http://localhost:3000/tasks/status/3
 Content-Type: application/json
 
 {
     "id":{},
-    "title": "Tarea 1 Software",
-    "detail": "Control de lectura",
-    "status": "COMPLETE"
+    "title": "Software",
+    "status": "Completed"
+    
 }
 
 ###Marcar pendientes PUT /tasks/{id}?state=pending
-PUT http://localhost:3000/tasks/2
+PUT http://localhost:3000/tasks/status/2
 Content-Type: application/json
 
 {
