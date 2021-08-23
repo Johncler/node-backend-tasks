@@ -60,6 +60,31 @@ app.delete('/tasks/:tasksId', function(req,res){
     }
 });
 
+app.put('/tasks/:taskId', jsonParser, function(req,res) {
+    var task = tasks.find(task => task.id == req.params.taskId);
+    task.title = req.body.title;
+    task.detail = req.body.detail;
+
+    if (task) {
+        res.json(task);
+    } else {
+        res.status(404);
+    }
+});
+
+app.put('/tasks/:taskId', jsonParser, function(req,res){
+    var task = tasks.find(task => task.id == req.params.taskId);
+    task.title = req.body.title;
+    task.detail = req.body.detail;
+    task.status = req.body.status;
+
+    if (task) {
+        res.json(task);
+    } else {
+        res.status(404);
+    }
+});
+
 app.listen(3000, () => {
     console.log("Servidor HTTP funcionando");
 });

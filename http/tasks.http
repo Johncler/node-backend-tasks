@@ -8,7 +8,7 @@ GET  http://localhost:3000/tasks
 Content-Type: application/json
 
 ###Obtener la primera tarea
-GET http://localhost:3000/tasks/2
+GET http://localhost:3000/tasks/3
 Content-Type: application/json
 
 ### Crear una nueva tarea
@@ -30,4 +30,30 @@ Content-Type: application/json
     "title": "Tarea modificada",
     "detail": "Detalle modificado"
 }
+
+###Eliminar una Tarea
+DELETE http://localhost:3000/tasks/3
+
+###Marcar Completado PUT /tasks/{id}?state=complete
+PUT http://localhost:3000/tasks/2
+Content-Type: application/json
+
+{
+    "id":{},
+    "title": "Tarea 1 Software",
+    "detail": "Control de lectura",
+    "status": "COMPLETE"
+}
+
+###Marcar pendientes PUT /tasks/{id}?state=pending
+PUT http://localhost:3000/tasks/2
+Content-Type: application/json
+
+{
+    "id":{},
+    "title": "Tarea #",
+    "detail": "Detalle de tarea",
+    "status": "PENDING"
+}
+
 
